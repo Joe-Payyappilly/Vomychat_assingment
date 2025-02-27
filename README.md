@@ -1,4 +1,4 @@
-# Referral System API
+# Vomychat Assignment
 
 ## Overview
 
