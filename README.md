@@ -2,13 +2,12 @@
 
 ## Overview
 
-This project is a Referral System API built using Flask. It allows users to register, authenticate, refer others, and earn rewards. The API also includes a test suite to verify functionality.
+This project is a backend for a platform similar to Linktree or Bento.me, built using Flask. It includes user registration, authentication, a referral system, and other essential functionalities. Users can register, log in, refer others, and earn rewards. The API also features a test suite to verify its functionality.
 
 ## Features
 
 - **User Registration & Authentication** (JWT-based authentication)
 - **Referral System** (Users can refer others and earn rewards)
-- **Reward Management**
 - **Email-based Password Reset** (Using a local SMTP server)
 - **Test Cases** (Using pytest)
 
@@ -71,7 +70,7 @@ $ flask db upgrade
 ### **6. Start the Local SMTP Server** (For email functionality)
 
 ```sh
-$ python -m smtpd -c DebuggingServer -n localhost:1025
+$ python -m aiosmtpd -n -c aiosmtpd.handlers.Debugging stdout --listen localhost:1025
 ```
 
 ### **7. Run the Application**
@@ -91,17 +90,13 @@ The API should now be running at `http://127.0.0.1:5000/`.
 - **Register**: `POST /api/register`
 - **Login**: `POST /api/login`
 - **Reset Password (Request)**: `POST /api/reset-password`
-- **Reset Password (Confirm)**: `POST /api/reset-password/confirm`
+
 
 ### **Referral System**
 
 - **Refer a User**: Handled during registration
 - **View User Referrals**: `GET /api/referrals`
 - **Get Referral Statistics**: `GET /api/referral-stats`
-
-### **Rewards**
-
-- **Get User Rewards**: `GET /api/rewards`
 
 ---
 
@@ -134,5 +129,4 @@ $ pytest -v
 - Implement a production-ready email service (e.g., SendGrid, Mailgun)
 - Add front-end UI for managing referrals and rewards
 - Introduce caching for improved API performance
-
 - Implement user roles and permissions for more complex access control
